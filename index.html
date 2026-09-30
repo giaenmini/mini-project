@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="searchvalue">
+    <h1>🛒 Product Search & Filter</h1>
+
+    <label for="search">SEARCH:</label>
+    <input type="text" id="search">
+    <label for="price">PRICE:</label>
+    <select name="price" id="price">
+        <option class="op" value="Default">Default</option>
+        <option class="op" value="Low->High">Low->High</option>
+        <option class="op" value="High->Low">High->Low</option>
+    </select>
+    <label for="catalog">CATALOG:</label>
+    <select name="catalog" id="catalog">
+        <option value="All">All</option>
+        <option value="Electronics">Electronics</option>
+        <option value="Accessories">Accessories</option>
+        <option value="Clothing">Clothing</option>
+    </select>
+    </div>
+
+    <div id="product-list"></div>
+    <p id="showing">Showing:</p>
+    <script src="index.js"></script>
+</body>
+</html>

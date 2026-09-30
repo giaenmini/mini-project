@@ -1,0 +1,27 @@
+.searchvalue{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    gap: 5px;
+}
+.op{
+    text-align: center;
+}
+.searchvalue input{
+    width: 300px;
+    padding: 5px;
+    margin: 5px 0px;
+    border-radius: 5px;
+}
+.searchvalue select{
+    width: 100px;
+    padding: 5px;
+    margin: 5px 0px;
+    border-radius: 5px;
+}
+#showing{
+    text-align: end;
+    margin-right: 50px;
+    font-weight: bold;
+}
