@@ -1,11 +1,7 @@
-import ToDoList from "./ToDoList.jsx"
+import ToDoList from "./ToDoList.jsx";
 
-function App(){
-   return(
-    <>
+export default function App(){
+  return(
     <ToDoList/>
-    </>
-   )
+  )
 }
-
-export default App

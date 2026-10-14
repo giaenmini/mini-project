@@ -1,69 +1,77 @@
-import React, {useState} from "react";
+import { element } from "prop-types";
+import React, {useEffect, useState} from "react";
 
-function ToDoList(){
-    const [task, setTask] = useState(["Eat a breakfast", "Take a shower", "Walk the dog"]);
-    const [newtask, setNewTask] = useState("");
+export default function ToDoList(){
+    
+    const [inputvalue, setinputvalue] = useState("");
+    const [addtask, setaddtask] = useState([]);
+    const [checked, setchecked] = useState(false);
+    const [temp, settemp] = useState("all");
 
-    function inputchange(event){
-        setNewTask(event.target.value);
+    function Inputchange(event){
+        setinputvalue(event.target.value);
+    }
+    function Addstack(){
+        if(inputvalue != ""){
+            setaddtask([...addtask , {text: inputvalue, iscompleted: false}]);
+            setinputvalue("");
+        }
+    }
+    function Removetask(index){
+       const updatetask = addtask.filter((_, i) => i !== index);
+       setaddtask(updatetask);
     }
     
-
-    function addstack(){
-        if(newtask.trim() !== ""){
-        setTask(t => [...t, newtask]);
-        setNewTask("");
-        }
+    function Checkbox(index){
+        const updatechange = addtask.map((task, i)=>{
+            if(i === index){
+                return{...task, iscompleted: !task.iscompleted};
+            }
+            return task;
+        });
+        setaddtask(updatechange);
+    }
+    function Completedtask(){
+        settemp("Completed")
+    }
+     function Activetask(){
+        settemp("Active")
+    }
+    function Alltask(){
+        settemp("All")
     }
 
-
-    function deletetask(index){
-        const updatetask = task.filter((_, i) => i !== index);
-        setTask(updatetask);
-        }
-
-    
-    function movetaskup(index){
-        const updateT = [...task];
-        if(index > 0){
-            [updateT[index] , updateT[index-1]] = [updateT[index-1], updateT[index]];
-            setTask(updateT);
-        }
-    }
-
-
-    function movetaskdown(index){
-        const updateT = [...task];
-        if(index < task.length -1){
-            [updateT[index], updateT[index+1]] = [updateT[index+1], updateT[index]];
-            setTask(updateT);
-        }
-    }
+    const filtertask = addtask.filter((task) =>{
+        if(temp === "Active") return task.iscompleted === false;
+        if(temp === "Completed") return task.iscompleted === true;
+            return true;
+    });
 
 
     return(
-        <div className="todolist">
-            <h1>To-Do-List</h1>
+        <div>
+            <h2>To Do List</h2>
 
-            <div className="cn">
-            <input type="text" value={newtask} placeholder="Enter a task..." onChange={inputchange} id="di"/>
-            <button className="bt" onClick={addstack}>ADD</button>
+            <div>
+                <input type="text" value={inputvalue} onChange={Inputchange} placeholder="enter your task..."/>
+                <button onClick={Addstack}>Add</button>
             </div>
-            <ol>
-                {task.map((element, index) => 
-                <li key={index}>
-                    <span className="text">{element}</span>
-                    <button className="dt" onClick={() => deletetask(index)}>Delete</button>
-                    <button className="da" onClick={()=> movetaskup(index)}>UP</button>
-                    <button className="db" onClick={()=> movetaskdown(index)}>DOWN</button>
-                </li>)}
-            </ol>
 
+            <div>
+                <button onClick={Alltask}>All</button>
+                <button onClick={Activetask}>Active</button>
+                <button onClick={Completedtask}>Completed</button>
+            </div>
 
+           <ol>
+             {filtertask.map((element, index) =>{
+                return  <li key={index}><input type="checkbox" id="mycheck" onChange={() => Checkbox(index)} checked={element.iscompleted}/>{element.text}
+                <button onClick={()=> Removetask(index)}>remove</button></li>
+             })}
+           </ol>
+
+           <p>Task: {filtertask.length}</p>
+               
         </div>
-
-        
     )
 }
-
-export default ToDoList
