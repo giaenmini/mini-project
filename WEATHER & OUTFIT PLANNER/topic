@@ -1,0 +1,15 @@
+
+ĐỀ BÀI: WEATHER & OUTFIT PLANNER
+
+
+1. Mô tả bài toán
+
+Bạn sẽ xây dựng một ứng dụng cho phép người dùng chọn một thành phố (Hà Nội, TP.HCM, Đà Lạt). Khi chọn thành phố, ứng dụng sẽ tự động chạy ngầm (gọi API giả lập) để lấy nhiệt độ hiện tại. Dựa vào nhiệt độ đó, ứng dụng sẽ gợi ý trang phục phù hợp và hiển thị đồng hồ thời gian thực của thành phố đó.
+
+2. Cấu trúc các Component bắt buộc
+
+Bạn không được viết tất cả code vào một file App.jsx mà bắt buộc phải chia thành ít nhất 3 file component sau:
+• App.jsx (Component Cha): Quản lý State tổng của ứng dụng (thành phố đang chọn, nhiệt độ hiện tại, thời gian).
+• CitySelector.jsx (Component Con 1): Chứa ô select để chọn thành phố. Khi người dùng chọn, component này phải truyền dữ liệu ngược lại cho Cha (App.jsx).
+• WeatherDisplay.jsx (Component Con 2): Nhận dữ liệu nhiệt độ và thời gian từ Cha truyền xuống để hiển thị ra màn hình.
+• OutfitSuggestion.jsx (Component Con 3): Nhận nhiệt độ từ Cha truyền xuống, tự tính toán logic để hiển thị gợi ý trang phục (Ví dụ: dưới 20 độ → Gợi ý mặc áo len; trên 30 độ → Gợi ý mặc áo thun).
