@@ -1,0 +1,319 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+    color: #252b36;
+    background: #f5f7fa;
+    --primary: #4f6bed;
+    --primary-hover: #3d56d8;
+    --text: #252b36;
+    --text-muted: #7a8494;
+    --border: #e6eaf0;
+    --surface: #ffffff;
+    --background: #f5f7fa;
+    --danger: #d9534f;
+    --radius: 12px;
+}
+
+body {
+    min-width: 320px;
+    min-height: 100vh;
+    background: var(--background);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 36px 20px;
+}
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+.devtask {
+    width: 100%;
+    max-width: 1120px;
+    margin: 0 auto;
+}
+
+.devtask > h2 {
+    font-size: clamp(24px, 3vw, 30px);
+    font-weight: 700;
+    letter-spacing: -0.8px;
+    color: #202838;
+    margin-bottom: 28px;
+}
+
+.status {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.status > div {
+    min-height: 115px;
+    display: flex;
+    align-items: center;
+    padding: 22px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: 0 2px 5px rgb(31 41 55 / 3%);
+}
+
+.status h3 {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.6;
+    color: var(--text-muted);
+}
+
+.search {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.search input {
+    flex: 1;
+    min-width: 0;
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 18px;
+    margin-bottom: 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+input,
+select {
+    min-height: 42px;
+    padding: 9px 12px;
+    color: var(--text);
+    background: #fff;
+    border: 1px solid #dfe4ec;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.15s ease;
+}
+
+input::placeholder {
+    color: #a0a8b5;
+}
+
+input:focus,
+select:focus {
+    border-color: #8295f4;
+    box-shadow: 0 0 0 3px rgb(79 107 237 / 9%);
+}
+
+select {
+    max-width: 100%;
+    cursor: pointer;
+}
+
+.search input {
+    background: #fff;
+}
+
+button {
+    min-height: 40px;
+    padding: 9px 16px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.15px;
+    transition:
+        background-color 0.15s ease,
+        border-color 0.15s ease;
+}
+
+.search button,
+.button > button {
+    color: #fff;
+    background: var(--primary);
+}
+
+.search button:hover,
+.button > button:hover {
+    background: var(--primary-hover);
+}
+
+button:focus-visible {
+    outline: 3px solid rgb(79 107 237 / 25%);
+    outline-offset: 2px;
+}
+
+.button > input,
+.button > select,
+.button > label {
+    flex-shrink: 0;
+}
+
+.button > label {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.button > input[name="ten"] {
+    flex: 1 1 220px;
+    min-width: 180px;
+}
+
+.button > input[name="id"] {
+    width: 100px;
+}
+
+.button > input[name="han"] {
+    min-width: 160px;
+}
+
+.devtask ol {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    list-style: none;
+    counter-reset: task;
+}
+
+.devtask ol li {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 18px 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: 0 2px 5px rgb(31 41 55 / 2%);
+    overflow-wrap: anywhere;
+    font-size: 14px;
+    color: #525c6d;
+    counter-increment: task;
+}
+
+.devtask ol li::before {
+    content: counter(task, decimal-leading-zero);
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    margin-right: 4px;
+    border-radius: 9px;
+    color: var(--primary);
+    background: #eef1ff;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.devtask ol li button {
+    flex-shrink: 0;
+}
+
+.devtask ol li button:first-of-type {
+    margin-left: auto;
+    color: var(--danger);
+    background: #fff;
+    border-color: #f0dada;
+}
+
+.devtask ol li button:first-of-type:hover {
+    background: #fff1f0;
+}
+
+.devtask ol li button:last-of-type {
+    color: var(--primary);
+    background: #fff;
+    border-color: #dfe4ff;
+}
+
+.devtask ol li button:last-of-type:hover {
+    background: #f0f3ff;
+}
+
+@media (max-width: 900px) {
+    body {
+        padding: 28px 18px;
+    }
+    .status {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .button {
+        gap: 10px;
+    }
+}
+
+@media (max-width: 560px) {
+    body {
+        padding: 22px 12px;
+    }
+    .devtask > h2 {
+        margin-bottom: 20px;
+    }
+    .status {
+        gap: 10px;
+    }
+    .status > div {
+        min-height: 90px;
+        padding: 14px;
+    }
+    .status h3 {
+        font-size: 12px;
+    }
+    .search {
+        gap: 8px;
+    }
+    .search button {
+        padding: 9px 12px;
+    }
+    .button {
+        align-items: stretch;
+        padding: 14px;
+    }
+    .button > select,
+    .button > input,
+    .button > button {
+        width: 100%;
+        min-width: 0;
+    }
+    .button > label {
+        width: 100%;
+        margin-top: 4px;
+    }
+    .devtask ol li {
+        padding: 14px;
+        gap: 8px;
+        font-size: 13px;
+    }
+    .devtask ol li button:first-of-type {
+        margin-left: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
